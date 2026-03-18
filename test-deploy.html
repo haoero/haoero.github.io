@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机器人赛道 OpenClaw 赋能分析 - 麦肯锡风格战略报告</title>
+    <style>
+        :root {
+            --mckinsey-blue: #004C87;
+            --mckinsey-dark-blue: #002D52;
+            --mckinsey-light-blue: #E8F4F8;
+            --mckinsey-gray: #F5F5F5;
+            --mckinsey-dark-gray: #333333;
+            --mckinsey-medium-gray: #666666;
+            --mckinsey-border: #DDDDDD;
+            --priority-high: #D32F2F;
+            --priority-medium: #F57C00;
+            --priority-low: #388E3C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: var(--mckinsey-dark-gray);
+            background-color: #FAFAFA;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--mckinsey-dark-blue);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--mckinsey-blue) 0%, var(--mckinsey-dark-blue) 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header-meta {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .header-meta-item {
+            background: rgba(255,255,255,0.15);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 100px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--mckinsey-blue);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--mckinsey-blue);
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--mckinsey-dark-blue);
+            margin: 2rem 0 1rem;
+        }
+
+        /* Executive Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--mckinsey-blue);
+        }
+
+        .summary-card h3 {
+            color: var(--mckinsey-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .summary-card p {
+            color: var(--mckinsey-medium-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: var(--mckinsey-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--mckinsey-border);
+            font-size: 0.95rem;
+        }
+
+        tr:hover {
+            background: var(--mckinsey-light-blue);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Priority Badges */
+        .priority-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .priority-high {
+            background: var(--priority-high);
+        }
+
+        .priority-medium {
+            background: var(--priority-medium);
+        }
+
+        .priority-low {
+            background: var(--priority-low);
+        }
+
+        /* Company Cards */
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .company-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .company-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .company-header {
+            background: var(--mckinsey-blue);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .company-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-market {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .company-body {
+            padding: 1.5rem;
+        }
+
+        .company-info {
+            margin-bottom: 1rem;
+        }
+
+        .company-info-label {
+            font-weight: 600;
+            color: var(--mckinsey-blue);
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .company-info-value {
+            color: var(--mckinsey-dark-gray);
+            font-size: 0.95rem;
+        }
+
+        .score-bar {
+            background: var(--mckinsey-gray);
+            border-radius: 4px;
+            height: 8px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--mckinsey-blue), #4A90C7);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* Opportunity Boxes */
+        .opportunity-box {
+            background: var(--mckinsey-light-blue);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--mckinsey-blue);
+        }
+
+        .opportunity-box h4 {
+            color: var(--mckinsey-blue);
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .opportunity-box ul {
+            margin-left: 1.5rem;
+            color: var(--mckinsey-medium-gray);
+        }
+
+        .opportunity-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Chart Placeholder */
+        .chart-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        .chart-label {
+            width: 150px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .chart-bar-fill {
+            flex: 1;
+            height: 30px;
+            background: linear-gradient(90deg, var(--mckinsey-blue), #4A90C7);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Scenario Diagram */
+        .scenario-diagram {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .diagram-step {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--mckinsey-gray);
+            border-radius: 6px;
+        }
+
+        .diagram-step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--mckinsey-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .diagram-step-content {
+            flex: 1;
+        }
+
+        .diagram-step-title {
+            font-weight: 600;
+            color: var(--mckinsey-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .diagram-step-desc {
+            font-size: 0.9rem;
+            color: var(--mckinsey-medium-gray);
+        }
+
+        /* Risk Table */
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .risk-table th {
+            background: var(--mckinsey-dark-gray);
+        }
+
+        .risk-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--mckinsey-border);
+        }
+
+        /* Recommendations */
+        .recommendation-box {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .recommendation-box.high {
+            border-left: 4px solid var(--priority-high);
+        }
+
+        .recommendation-box.medium {
+            border-left: 4px solid var(--priority-medium);
+        }
+
+        .recommendation-box.low {
+            border-left: 4px solid var(--priority-low);
+        }
+
+        .recommendation-box h4 {
+            margin-bottom: 1rem;
+            color: var(--mckinsey-blue);
+        }
+
+        .recommendation-box ol,
+        .recommendation-box ul {
+            margin-left: 1.5rem;
+        }
+
+        .recommendation-box li {
+            margin-bottom: 0.75rem;
+            color: var(--mckinsey-medium-gray);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--mckinsey-dark-blue);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .company-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav {
+                display: none;
+            }
+
+            .header {
+                padding: 4rem 2rem 2rem;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .company-card,
+        .summary-card,
+        .opportunity-box {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">🦐🦀 龙宫智库</a>
+            <ul class="nav-links">
+                <li><a href="#executive-summary">执行摘要</a></li>
+                <li><a href="#market-overview">市场概览</a></li>
+                <li><a href="#company-analysis">公司分析</a></li>
+                <li><a href="#opportunities">赋能机会</a></li>
+                <li><a href="#recommendations">战略建议</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>机器人赛道 OpenClaw 赋能分析</h1>
+        <p class="header-subtitle">麦肯锡风格战略分析 - 识别最具潜力利用 AI 代理框架脱颖而出的机器人公司</p>
+        <div class="header-meta">
+            <span class="header-meta-item">📅 2025 年 3 月</span>
+            <span class="header-meta-item">📊 8 家公司分析</span>
+            <span class="header-meta-item">🎯 3 个高优先级</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Executive Summary -->
+        <section id="executive-summary">
+            <h2 class="section-title">Executive Summary 执行摘要</h2>
+            
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>🎯 核心发现</h3>
+                    <p>人形机器人和智能工业机器人厂商与 OpenClaw 的匹配度最高，主要受益于多代理协作、自动化研发流程和跨平台集成能力。</p>
+                </div>
+                <div class="summary-card">
+                    <h3>📈 市场机会</h3>
+                    <p>2025 年全球机器人市场规模约 2,800 亿美元，AI 代理框架渗透率&lt;5%，预计 2027 年达 15-20%。</p>
+                </div>
+                <div class="summary-card">
+                    <h3>⭐ 高优先级公司</h3>
+                    <p>优必选 (9.2/10)、特斯拉 (8.8/10)、埃斯顿 (8.5/10) 最有可能利用 OpenClaw 快速脱颖而出。</p>
+                </div>
+                <div class="summary-card">
+                    <h3>💡 关键赋能场景</h3>
+                    <p>人形机器人自主任务执行、研发效率提升、跨平台客户协同、供应链智能协同。</p>
+                </div>
+            </div>
+
+            <div class="table-container" style="margin-top: 2rem;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>优先级</th>
+                            <th>公司</th>
+                            <th>市场</th>
+                            <th>匹配度评分</th>
+                            <th>关键机会</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="priority-badge priority-high">高</span></td>
+                            <td>优必选</td>
+                            <td>港股</td>
+                            <td>9.2/10</td>
+                            <td>人形机器人 AI 代理集成</td>
+                        </tr>
+                        <tr>
+                            <td><span class="priority-badge priority-high">高</span></td>
+                            <td>特斯拉</td>
+                            <td>美股</td>
+                            <td>8.8/10</td>
+                            <td>Optimus 自主决策系统</td>
+                        </tr>
+                        <tr>
+                            <td><span class="priority-badge priority-high">高</span></td>
+                            <td>埃斯顿</td>
+                            <td>A 股</td>
+                            <td>8.5/10</td>
+                            <td>工业机器人智能化升级</td>
+                        </tr>
+                        <tr>
+                            <td><span class="priority-badge priority-medium">中</span></td>
+                            <td>汇川技术</td>
+                            <td>A 股</td>
+                            <td>7.5/10</td>
+                            <td>工控系统 AI 化</td>
+                        </tr>
+                        <tr>
+                            <td><span class="priority-badge priority-medium">中</span></td>
+                            <td>Intuitive Surgical</td>
+                            <td>美股</td>
+                            <td>7.2/10</td>
+                            <td>手术机器人辅助决策</td>
+                        </tr>
+                        <tr>
+                            <td><span class="priority-badge priority-medium">中</span></td>
+                            <td>绿的谐波</td>
+                            <td>A 股</td>
+                            <td>6.8/10</td>
+                            <td>供应链协同优化</td>
+                        </tr>
+                        <tr>
+                            <td><span class="priority-badge priority-low">低</span></td>
+                            <td>新松机器人</td>
+                            <td>A 股</td>
+                            <td>6.0/10</td>
+                            <td>传统自动化改造</td>
+                        </tr>
+                        <tr>
+                            <td><span class="priority-badge priority-low">低</span></td>
+                            <td>Teradyne</td>
+                            <td>美股</td>
+                            <td>5.5/10</td>
+                            <td>测试设备智能化</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Market Overview -->
+        <section id="market-overview">
+            <h2 class="section-title">Market Overview 市场概览</h2>
+            
+            <div class="chart-container">
+                <h3 class="section-subtitle">全球机器人市场规模与增长</h3>
+                <div class="chart-bar">
+                    <span class="chart-label">2025 年规模</span>
+                    <div class="chart-bar-fill" style="width: 280px;">$2,800 亿</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">CAGR (2025-30)</span>
+                    <div class="chart-bar-fill" style="width: 125px;">12.5%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">人形机器人增速</span>
+                    <div class="chart-bar-fill" style="width: 450px;">45%+</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">AI 代理渗透率 (2027)</span>
+                    <div class="chart-bar-fill" style="width: 175px;">15-20%</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>市场</th>
+                            <th>代表企业</th>
+                            <th>技术优势</th>
+                            <th>主要挑战</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>A 股</strong></td>
+                            <td>埃斯顿、汇川、绿的谐波</td>
+                            <td>成本控制、供应链完整</td>
+                            <td>核心算法、高端应用</td>
+                        </tr>
+                        <tr>
+                            <td><strong>港股</strong></td>
+                            <td>优必选</td>
+                            <td>人形机器人领先</td>
+                            <td>商业化落地</td>
+                        </tr>
+                        <tr>
+                            <td><strong>美股</strong></td>
+                            <td>特斯拉、Intuitive Surgical</td>
+                            <td>AI 算法、品牌影响力</td>
+                            <td>制造成本、监管</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Company Analysis -->
+        <section id="company-analysis">
+            <h2 class="section-title">Company Analysis 公司分析</h2>
+            
+            <div class="company-grid">
+                <!-- 优必选 -->
+                <div class="company-card">
+                    <div class="company-header">
+                        <div class="company-name">优必选 UBTECH</div>
+                        <div class="company-market">🇭🇰 港股 | 匹配度 9.2/10</div>
+                    </div>
+                    <div class="company-body">
+                        <div class="company-info">
+                            <div class="company-info-label">主营业务</div>
+                            <div class="company-info-value">人形机器人、教育机器人、服务机器人</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">核心产品</div>
+                            <div class="company-info-value">Walker 系列人形机器人、Cruzr 服务机器人</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">市值规模</div>
+                            <div class="company-info-value">约 300-400 亿港元</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">技术优势</div>
+                            <div class="company-info-value">伺服关节、运动控制、人机交互</div>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <div class="company-info-label">OpenClaw 匹配维度</div>
+                            <div style="margin-top: 0.5rem;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>研发效率</span>
+                                    <span>9/10</span>
+                                </div>
+                                <div class="score-bar"><div class="score-fill" style="width: 90%;"></div></div>
+                                
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>产品集成</span>
+                                    <span>10/10</span>
+                                </div>
+                                <div class="score-bar"><div class="score-fill" style="width: 100%;"></div></div>
+                                
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>快速迭代</span>
+                                    <span>9/10</span>
+                                </div>
+                                <div class="score-bar"><div class="score-fill" style="width: 90%;"></div></div>
+                            </div>
+                        </div>
+                        
+                        <div class="opportunity-box" style="margin-top: 1.5rem;">
+                            <h4>🎯 关键赋能机会</h4>
+                            <ul>
+                                <li>Walker 机器人自主决策代理</li>
+                                <li>运动控制算法快速迭代</li>
+                                <li>飞书/微信客户自助服务</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 特斯拉 -->
+                <div class="company-card">
+                    <div class="company-header">
+                        <div class="company-name">特斯拉 Tesla</div>
+                        <div class="company-market">🇺🇸 美股 | 匹配度 8.8/10</div>
+                    </div>
+                    <div class="company-body">
+                        <div class="company-info">
+                            <div class="company-info-label">主营业务</div>
+                            <div class="company-info-value">电动汽车、能源存储、人形机器人 (Optimus)</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">核心产品</div>
+                            <div class="company-info-value">Optimus Gen-2 人形机器人</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">市值规模</div>
+                            <div class="company-info-value">约 8,000 亿美元</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">技术优势</div>
+                            <div class="company-info-value">AI 视觉、端到端神经网络、大规模制造</div>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <div class="company-info-label">OpenClaw 匹配维度</div>
+                            <div style="margin-top: 0.5rem;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>研发效率</span>
+                                    <span>9/10</span>
+                                </div>
+                                <div class="score-bar"><div class="score-fill" style="width: 90%;"></div></div>
+                                
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>产品集成</span>
+                                    <span>9/10</span>
+                                </div>
+                                <div class="score-bar"><div class="score-fill" style="width: 90%;"></div></div>
+                                
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>快速迭代</span>
+                                    <span>9/10</span>
+                                </div>
+                                <div class="score-bar"><div class="score-fill" style="width: 90%;"></div></div>
+                            </div>
+                        </div>
+                        
+                        <div class="opportunity-box" style="margin-top: 1.5rem;">
+                            <h4>🎯 关键赋能机会</h4>
+                            <ul>
+                                <li>Optimus 任务规划代理</li>
+                                <li>工厂多代理柔性制造</li>
+                                <li>训练数据自动化收集</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 埃斯顿 -->
+                <div class="company-card">
+                    <div class="company-header">
+                        <div class="company-name">埃斯顿 ESTUN</div>
+                        <div class="company-market">🇨🇳 A 股 | 匹配度 8.5/10</div>
+                    </div>
+                    <div class="company-body">
+                        <div class="company-info">
+                            <div class="company-info-label">主营业务</div>
+                            <div class="company-info-value">工业机器人、自动化解决方案</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">核心产品</div>
+                            <div class="company-info-value">六轴机器人、SCARA、焊接/搬运机器人</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">市值规模</div>
+                            <div class="company-info-value">约 200-300 亿元人民币</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">技术优势</div>
+                            <div class="company-info-value">控制器自研、行业应用积累</div>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <div class="company-info-label">OpenClaw 匹配维度</div>
+                            <div style="margin-top: 0.5rem;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>运营自动化</span>
+                                    <span>9/10</span>
+                                </div>
+                                <div class="score-bar"><div class="score-fill" style="width: 90%;"></div></div>
+                                
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>产品集成</span>
+                                    <span>8/10</span>
+                                </div>
+                                <div class="score-bar"><div class="score-fill" style="width: 80%;"></div></div>
+                                
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>快速迭代</span>
+                                    <span>8/10</span>
+                                </div>
+                                <div class="score-bar"><div class="score-fill" style="width: 80%;"></div></div>
+                            </div>
+                        </div>
+                        
+                        <div class="opportunity-box" style="margin-top: 1.5rem;">
+                            <h4>🎯 关键赋能机会</h4>
+                            <ul>
+                                <li>行业方案快速定制</li>
+                                <li>远程运维（飞书/Telegram）</li>
+                                <li>行业应用技能库</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 汇川技术 -->
+                <div class="company-card">
+                    <div class="company-header">
+                        <div class="company-name">汇川技术 Inovance</div>
+                        <div class="company-market">🇨🇳 A 股 | 匹配度 7.5/10</div>
+                    </div>
+                    <div class="company-body">
+                        <div class="company-info">
+                            <div class="company-info-label">主营业务</div>
+                            <div class="company-info-value">工业自动化控制产品、工业机器人</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">核心产品</div>
+                            <div class="company-info-value">伺服系统、变频器、PLC、SCARA 机器人</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">市值规模</div>
+                            <div class="company-info-value">约 1,500-2,000 亿元人民币</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">技术优势</div>
+                            <div class="company-info-value">控制算法、行业解决方案</div>
+                        </div>
+                        
+                        <div class="opportunity-box" style="margin-top: 1.5rem;">
+                            <h4>🎯 关键赋能机会</h4>
+                            <ul>
+                                <li>智能工控系统（状态预测）</li>
+                                <li>供应链多代理协同</li>
+                                <li>客户培训自动化</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intuitive Surgical -->
+                <div class="company-card">
+                    <div class="company-header">
+                        <div class="company-name">Intuitive Surgical</div>
+                        <div class="company-market">🇺🇸 美股 | 匹配度 7.2/10</div>
+                    </div>
+                    <div class="company-body">
+                        <div class="company-info">
+                            <div class="company-info-label">主营业务</div>
+                            <div class="company-info-value">手术机器人系统</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">核心产品</div>
+                            <div class="company-info-value">da Vinci 手术机器人</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">市值规模</div>
+                            <div class="company-info-value">约 1,500 亿美元</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">技术优势</div>
+                            <div class="company-info-value">精密控制、微创手术、医生培训</div>
+                        </div>
+                        
+                        <div class="opportunity-box" style="margin-top: 1.5rem;">
+                            <h4>🎯 关键赋能机会</h4>
+                            <ul>
+                                <li>手术数据分析（辅助培训）</li>
+                                <li>设备维护预测</li>
+                                <li>合规文档自动生成</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 绿的谐波 -->
+                <div class="company-card">
+                    <div class="company-header">
+                        <div class="company-name">绿的谐波</div>
+                        <div class="company-market">🇨🇳 A 股 | 匹配度 6.8/10</div>
+                    </div>
+                    <div class="company-body">
+                        <div class="company-info">
+                            <div class="company-info-label">主营业务</div>
+                            <div class="company-info-value">精密谐波减速器</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">核心产品</div>
+                            <div class="company-info-value">谐波减速器、机电一体化产品</div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info-label">市值规模</div>
+                            <div class="company-info-value">约 150-250 亿元人民币</div>
+                        </div>
+                        
+                        <div class="opportunity-box" style="margin-top: 1.5rem;">
+                            <h4>🎯 关键赋能机会</h4>
+                            <ul>
+                                <li>供应链多代理优化</li>
+                                <li>质量管理自动化</li>
+                                <li>客户关系管理集成</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Opportunities -->
+        <section id="opportunities">
+            <h2 class="section-title">OpenClaw 赋能机会（具体场景）</h2>
+            
+            <div class="scenario-diagram">
+                <h3 class="section-subtitle">场景 1：人形机器人自主任务执行</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--mckinsey-medium-gray);">适用公司：优必选、特斯拉</p>
+                
+                <div class="diagram-step">
+                    <div class="diagram-step-number">1</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">用户指令输入</div>
+                        <div class="diagram-step-desc">"整理会议室"等自然语言指令</div>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="diagram-step-number">2</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">任务分解代理</div>
+                        <div class="diagram-step-desc">识别子任务（收拾桌面、擦桌子、整理椅子）</div>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="diagram-step-number">3</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">多代理协同执行</div>
+                        <div class="diagram-step-desc">运动规划 + 视觉感知 + 记忆系统 + 执行代理</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem; padding: 1rem; background: var(--mckinsey-light-blue); border-radius: 6px;">
+                    <strong>预期收益：</strong>任务完成率提升 40-60% | 新任务学习周期缩短 70% | 用户干预频率降低 80%
+                </div>
+            </div>
+
+            <div class="scenario-diagram">
+                <h3 class="section-subtitle">场景 2：研发效率提升</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--mckinsey-medium-gray);">适用公司：所有机器人公司</p>
+                
+                <div class="diagram-step">
+                    <div class="diagram-step-number">1</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">代码生成</div>
+                        <div class="diagram-step-desc">根据需求文档生成控制算法代码</div>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="diagram-step-number">2</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">测试自动化</div>
+                        <div class="diagram-step-desc">自动生成测试用例并执行</div>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="diagram-step-number">3</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">文档生成 & 知识检索</div>
+                        <div class="diagram-step-desc">从代码生成 API 文档，快速查找历史解决方案</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem; padding: 1rem; background: var(--mckinsey-light-blue); border-radius: 6px;">
+                    <strong>预期收益：</strong>代码开发效率提升 30-50% | 测试覆盖率提升 40% | 文档维护成本降低 60%
+                </div>
+            </div>
+
+            <div class="scenario-diagram">
+                <h3 class="section-subtitle">场景 3：跨平台客户协同</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--mckinsey-medium-gray);">适用公司：埃斯顿、汇川技术、优必选</p>
+                
+                <div class="diagram-step">
+                    <div class="diagram-step-number">1</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">客户请求接入</div>
+                        <div class="diagram-step-desc">微信/飞书/Telegram 多渠道接入</div>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="diagram-step-number">2</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">意图识别 & 知识检索</div>
+                        <div class="diagram-step-desc">判断需求类型，从知识库查找答案</div>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="diagram-step-number">3</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">工单创建 & 工程师调度</div>
+                        <div class="diagram-step-desc">自动创建服务工单，分派给合适的工程师</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem; padding: 1rem; background: var(--mckinsey-light-blue); border-radius: 6px;">
+                    <strong>预期收益：</strong>客户响应时间缩短 70% | 工单处理效率提升 40% | 客户满意度提升 20-30%
+                </div>
+            </div>
+
+            <div class="scenario-diagram">
+                <h3 class="section-subtitle">场景 4：供应链智能协同</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--mckinsey-medium-gray);">适用公司：绿的谐波、汇川技术</p>
+                
+                <div class="diagram-step">
+                    <div class="diagram-step-number">1</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">需求预测代理</div>
+                        <div class="diagram-step-desc">分析订单预测需求</div>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="diagram-step-number">2</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">库存 & 采购代理</div>
+                        <div class="diagram-step-desc">优化库存水平，自动询价和下单</div>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="diagram-step-number">3</div>
+                    <div class="diagram-step-content">
+                        <div class="diagram-step-title">物流 & 风险预警代理</div>
+                        <div class="diagram-step-desc">协调运输交付，识别供应风险</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem; padding: 1rem; background: var(--mckinsey-light-blue); border-radius: 6px;">
+                    <strong>预期收益：</strong>库存周转率提升 25% | 采购成本降低 10-15% | 交付准时率提升 20%
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations -->
+        <section id="recommendations">
+            <h2 class="section-title">战略建议</h2>
+            
+            <div class="recommendation-box high">
+                <h4>🔴 高优先级公司（优必选、特斯拉、埃斯顿）</h4>
+                <ol>
+                    <li><strong>立即启动试点项目</strong> - 选择 1-2 个核心场景（如研发自动化、客户协同），组建跨职能团队，设定明确的 KPI</li>
+                    <li><strong>构建 OpenClaw 技能库</strong> - 将核心业务流程转化为 SKILL.md，积累行业特定知识和最佳实践</li>
+                    <li><strong>培养 AI 代理文化</strong> - 培训员工使用 OpenClaw 工具，建立激励机制鼓励自动化创新</li>
+                </ol>
+            </div>
+
+            <div class="recommendation-box medium">
+                <h4>🟠 中优先级公司（汇川技术、Intuitive Surgical、绿的谐波）</h4>
+                <ol>
+                    <li><strong>评估和规划</strong> - 进行详细的流程梳理和痛点分析，识别最适合自动化的场景</li>
+                    <li><strong>从小规模开始</strong> - 选择低风险、高回报的场景试点，快速验证价值后扩大规模</li>
+                    <li><strong>建立内部能力</strong> - 培养 OpenClaw 使用专家，积累实施经验</li>
+                </ol>
+            </div>
+
+            <div class="recommendation-box low">
+                <h4>🟢 低优先级公司（新松机器人、Teradyne）</h4>
+                <ol>
+                    <li><strong>观望和学习</strong> - 关注行业领先者的实践，参加 OpenClaw 社区和培训</li>
+                    <li><strong>基础能力建设</strong> - 先完善数字化基础设施，建立数据治理和流程标准化</li>
+                    <li><strong>评估成熟度</strong> - 为未来 AI 代理应用做准备</li>
+                </ol>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: 3rem;">风险与挑战</h3>
+            <div class="table-container">
+                <table class="risk-table">
+                    <thead>
+                        <tr>
+                            <th>风险类型</th>
+                            <th>描述</th>
+                            <th>缓解措施</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>技术风险</strong></td>
+                            <td>AI 代理决策错误</td>
+                            <td>人机协同、审批流程、回滚机制</td>
+                        </tr>
+                        <tr>
+                            <td><strong>安全风险</strong></td>
+                            <td>数据泄露、系统攻击</td>
+                            <td>权限管理、加密、审计日志</td>
+                        </tr>
+                        <tr>
+                            <td><strong>组织风险</strong></td>
+                            <td>员工抵触、技能缺口</td>
+                            <td>培训、沟通、激励</td>
+                        </tr>
+                        <tr>
+                            <td><strong>合规风险</strong></td>
+                            <td>行业监管要求</td>
+                            <td>合规审查、文档记录</td>
+                        </tr>
+                        <tr>
+                            <td><strong>依赖风险</strong></td>
+                            <td>过度依赖 OpenClaw</td>
+                            <td>多元化、备份方案</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section>
+            <h2 class="section-title">结论</h2>
+            
+            <div style="background: linear-gradient(135deg, var(--mckinsey-blue) 0%, var(--mckinsey-dark-blue) 100%); color: white; padding: 2.5rem; border-radius: 8px;">
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                    OpenClaw 作为 AI 代理框架，为机器人公司提供了显著的竞争优势机会。<strong>人形机器人厂商（优必选、特斯拉）和智能工业机器人厂商（埃斯顿）</strong> 与 OpenClaw 的匹配度最高，应优先布局。
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 6px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                        <div style="font-weight: 600;">高层支持</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9;">战略重视</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 6px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚀</div>
+                        <div style="font-weight: 600;">试点场景</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9;">快速验证</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 6px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">👥</div>
+                        <div style="font-weight: 600;">组织能力</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9;">文化建设</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 6px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔄</div>
+                        <div style="font-weight: 600;">持续迭代</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9;">优化改进</div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 2rem; font-size: 1.05rem; font-weight: 600; text-align: center;">
+                    📌 行动呼吁：高优先级公司应在 6 个月内启动试点项目，中优先级公司应在 12 个月内完成评估和规划。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 龙宫智库 | 麦肯锡风格战略分析</p>
+        <p style="margin-top: 0.5rem;">🦐🦐 虾兵蟹将 为您汇报</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate score bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.score-fill');
+                    bars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.company-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
