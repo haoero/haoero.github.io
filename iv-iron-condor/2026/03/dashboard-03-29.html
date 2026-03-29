@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IV Iron Condor Dashboard - 2026-03-29</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --accent-gold: #d4af37;
+            --accent-gold-hover: #f1c40f;
+            --border-color: #333;
+            --success: #2e7d32;
+            --danger: #c62828;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            color: var(--accent-gold);
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .svg-container {
+            text-align: center;
+            margin: 30px 0;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .ticker {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .metrics {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .metrics .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .metrics .label {
+            color: var(--text-muted);
+        }
+
+        .strategies {
+            margin-bottom: 20px;
+        }
+
+        .strategy-tier {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .tier-title {
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .legs {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .stop-loss {
+            background: rgba(198, 40, 40, 0.1);
+            border: 1px solid rgba(198, 40, 40, 0.3);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .stop-loss-title {
+            color: #ef5350;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>黑金战术面板 | 梯形铁鹰策略</h1>
+            <p>2026-03-29 | 核心标的组合：WBA, PAYX, MKC, CAG, LW</p>
+        </div>
+
+        <div class="svg-container">
+            <h3 style="color: var(--accent-gold); margin-top: 0;">梯形铁鹰损益示意图</h3>
+            <svg width="600" height="200" viewBox="0 0 600 200" style="max-width: 100%; height: auto;">
+                <!-- Grid lines -->
+                <line x1="50" y1="100" x2="550" y2="100" stroke="#333" stroke-width="2" />
+                <line x1="300" y1="20" x2="300" y2="180" stroke="#333" stroke-width="1" stroke-dasharray="5,5" />
+                
+                <!-- PnL Line -->
+                <path d="M 50 150 L 150 150 L 250 50 L 350 50 L 450 150 L 550 150" fill="none" stroke="#d4af37" stroke-width="4" />
+                
+                <!-- Fill Profit Area -->
+                <polygon points="150,150 200,100 400,100 450,150" fill="rgba(46, 125, 50, 0.2)" />
+                <!-- Fill Loss Area -->
+                <polygon points="50,150 150,150 200,100 100,100" fill="rgba(198, 40, 40, 0.2)" />
+                <polygon points="450,150 550,150 500,100 400,100" fill="rgba(198, 40, 40, 0.2)" />
+                
+                <!-- Strike Labels -->
+                <text x="150" y="170" fill="#a0a0a0" text-anchor="middle" font-size="12">买入看跌</text>
+                <text x="250" y="170" fill="#a0a0a0" text-anchor="middle" font-size="12">卖出看跌</text>
+                <text x="350" y="170" fill="#a0a0a0" text-anchor="middle" font-size="12">卖出看涨</text>
+                <text x="450" y="170" fill="#a0a0a0" text-anchor="middle" font-size="12">买入看涨</text>
+                
+                <!-- PnL Labels -->
+                <text x="300" y="40" fill="#2e7d32" text-anchor="middle" font-weight="bold">最大盈利区间</text>
+                <text x="100" y="140" fill="#c62828" text-anchor="middle">最大亏损</text>
+                <text x="500" y="140" fill="#c62828" text-anchor="middle">最大亏损</text>
+            </svg>
+        </div>
+
+        <div class="grid">
+            <!-- WBA -->
+            <div class="card">
+                <div class="ticker">
+                    <span>WBA</span>
+                    <span style="font-size: 1rem; color: var(--text-muted);">沃尔格林联合博姿</span>
+                </div>
+                <div class="metrics">
+                    <div class="row">
+                        <span class="label">三年真实波幅 (RV):</span>
+                        <span>32.4%</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">当前隐含波动 (IV/EM):</span>
+                        <span style="color: var(--accent-gold);">45.8% (高估)</span>
+                    </div>
+                </div>
+                <div class="strategies">
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 A (激进型)</span> <span>ROI: 18.5%</span></div>
+                        <div class="legs">P15/P17.5 - C22.5/C25 | 权利金: $0.45</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 B (稳健型)</span> <span>ROI: 12.0%</span></div>
+                        <div class="legs">P12.5/P15 - C25/C27.5 | 权利金: $0.28</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 C (防御型)</span> <span>ROI: 8.2%</span></div>
+                        <div class="legs">P10/P12.5 - C27.5/C30 | 权利金: $0.18</div>
+                    </div>
+                </div>
+                <div class="stop-loss">
+                    <div class="stop-loss-title">富途条件单止损配置</div>
+                    <div>触发条件: 标的突破短腿行权价 ±1%<br>委托设置: 市价平仓双腿组合</div>
+                </div>
+            </div>
+
+            <!-- PAYX -->
+            <div class="card">
+                <div class="ticker">
+                    <span>PAYX</span>
+                    <span style="font-size: 1rem; color: var(--text-muted);">沛齐</span>
+                </div>
+                <div class="metrics">
+                    <div class="row">
+                        <span class="label">三年真实波幅 (RV):</span>
+                        <span>18.2%</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">当前隐含波动 (IV/EM):</span>
+                        <span style="color: var(--accent-gold);">26.5% (中高)</span>
+                    </div>
+                </div>
+                <div class="strategies">
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 A (激进型)</span> <span>ROI: 15.2%</span></div>
+                        <div class="legs">P110/P115 - C130/C135 | 权利金: $0.65</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 B (稳健型)</span> <span>ROI: 10.5%</span></div>
+                        <div class="legs">P105/P110 - C135/C140 | 权利金: $0.42</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 C (防御型)</span> <span>ROI: 6.8%</span></div>
+                        <div class="legs">P100/P105 - C140/C145 | 权利金: $0.25</div>
+                    </div>
+                </div>
+                <div class="stop-loss">
+                    <div class="stop-loss-title">富途条件单止损配置</div>
+                    <div>触发条件: 标的触及115或130阻力位<br>委托设置: 组合整体亏损达权利金2倍时止损</div>
+                </div>
+            </div>
+
+            <!-- MKC -->
+            <div class="card">
+                <div class="ticker">
+                    <span>MKC</span>
+                    <span style="font-size: 1rem; color: var(--text-muted);">味好美</span>
+                </div>
+                <div class="metrics">
+                    <div class="row">
+                        <span class="label">三年真实波幅 (RV):</span>
+                        <span>15.6%</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">当前隐含波动 (IV/EM):</span>
+                        <span style="color: var(--accent-gold);">22.1% (中偏高)</span>
+                    </div>
+                </div>
+                <div class="strategies">
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 A (激进型)</span> <span>ROI: 14.8%</span></div>
+                        <div class="legs">P65/P70 - C85/C90 | 权利金: $0.55</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 B (稳健型)</span> <span>ROI: 9.5%</span></div>
+                        <div class="legs">P60/P65 - C90/C95 | 权利金: $0.35</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 C (防御型)</span> <span>ROI: 6.0%</span></div>
+                        <div class="legs">P55/P60 - C95/C100 | 权利金: $0.20</div>
+                    </div>
+                </div>
+                <div class="stop-loss">
+                    <div class="stop-loss-title">富途条件单止损配置</div>
+                    <div>触发条件: 浮亏=初始权利金x1.5<br>委托设置: 跟踪止损，单腿回购</div>
+                </div>
+            </div>
+
+            <!-- CAG -->
+            <div class="card">
+                <div class="ticker">
+                    <span>CAG</span>
+                    <span style="font-size: 1rem; color: var(--text-muted);">康尼格拉</span>
+                </div>
+                <div class="metrics">
+                    <div class="row">
+                        <span class="label">三年真实波幅 (RV):</span>
+                        <span>20.5%</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">当前隐含波动 (IV/EM):</span>
+                        <span style="color: var(--accent-gold);">29.4% (高估)</span>
+                    </div>
+                </div>
+                <div class="strategies">
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 A (激进型)</span> <span>ROI: 17.2%</span></div>
+                        <div class="legs">P25/P27.5 - C32.5/C35 | 权利金: $0.38</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 B (稳健型)</span> <span>ROI: 11.5%</span></div>
+                        <div class="legs">P22.5/P25 - C35/C37.5 | 权利金: $0.24</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 C (防御型)</span> <span>ROI: 7.5%</span></div>
+                        <div class="legs">P20/P22.5 - C37.5/C40 | 权利金: $0.15</div>
+                    </div>
+                </div>
+                <div class="stop-loss">
+                    <div class="stop-loss-title">富途条件单止损配置</div>
+                    <div>触发条件: 波动率异动或正股价格触碰短腿<br>委托设置: 自动挂单对冲</div>
+                </div>
+            </div>
+
+            <!-- LW -->
+            <div class="card">
+                <div class="ticker">
+                    <span>LW</span>
+                    <span style="font-size: 1rem; color: var(--text-muted);">蓝威斯顿</span>
+                </div>
+                <div class="metrics">
+                    <div class="row">
+                        <span class="label">三年真实波幅 (RV):</span>
+                        <span>25.8%</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">当前隐含波动 (IV/EM):</span>
+                        <span style="color: var(--accent-gold);">38.2% (极度高估)</span>
+                    </div>
+                </div>
+                <div class="strategies">
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 A (激进型)</span> <span>ROI: 20.5%</span></div>
+                        <div class="legs">P85/P90 - C110/C115 | 权利金: $0.85</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 B (稳健型)</span> <span>ROI: 14.0%</span></div>
+                        <div class="legs">P80/P85 - C115/C120 | 权利金: $0.55</div>
+                    </div>
+                    <div class="strategy-tier">
+                        <div class="tier-title"><span>锦囊 C (防御型)</span> <span>ROI: 9.2%</span></div>
+                        <div class="legs">P75/P80 - C120/C125 | 权利金: $0.35</div>
+                    </div>
+                </div>
+                <div class="stop-loss">
+                    <div class="stop-loss-title">富途条件单止损配置</div>
+                    <div>触发条件: 单侧防线被击穿<br>委托设置: 立即市价平仓受损翼，保留安全翼</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
