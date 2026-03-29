@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IV Iron Condor Dashboard - 2026-03-29</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+        .payoff-line { stroke: #10B981; stroke-width: 3; fill: none; }
+        .payoff-fill { fill: #10B981; opacity: 0.15; }
+        .zero-line { stroke: #6B7280; stroke-width: 1; stroke-dasharray: 4; }
+        .loss-line { stroke: #EF4444; stroke-width: 3; fill: none; }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen p-4 md:p-8 font-sans text-gray-200">
+<div class="max-w-6xl mx-auto space-y-8 mt-8 mb-12">
+<div class="text-center">
+<h1 class="text-4xl font-extrabold text-cyan-400 tracking-tight uppercase">黑金战术面板 | 梯形铁鹰策略</h1>
+<p class="text-gray-400 mt-2 text-xl">2026-03-29 | 核心标的组合：WBA, PAYX, MKC, CAG, LW</p>
+</div>
+</div>
+
+<!-- WBA -->
+<div class="max-w-6xl mx-auto space-y-8 mb-16">
+<div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 flex justify-between items-center">
+<div>
+<h1 class="text-3xl font-extrabold text-white tracking-tight">WBA (沃尔格林联合博姿) <span class="text-cyan-400">铁鹰狙击全景战术卡片</span></h1>
+<p class="text-gray-400 mt-2 text-lg">本周精选高IV/RV铁鹰标的</p>
+</div>
+<div class="text-right">
+<div class="text-4xl font-bold text-white">当前价</div>
+<div class="text-green-400 font-medium">IV: 45.8% (高估)</div>
+<div class="text-sm text-gray-500 mt-1">三年RV: <span class="text-green-400 font-bold">32.4%</span></div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 hover:border-gray-500 transition">
+<div class="flex items-center mb-6">
+<div class="bg-blue-900/50 p-3 rounded-lg mr-4">
+<svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h2 class="text-2xl font-bold text-gray-100">一、背景情报</h2>
+</div>
+<div class="space-y-4">
+<div class="bg-gray-900 p-4 rounded-xl border border-gray-700">
+<p class="text-sm text-gray-400 uppercase font-semibold tracking-wider">市场预期振幅 (Implied Move)</p>
+<p class="text-2xl font-bold text-white mt-1">45.8% (高估) <span class="text-lg text-gray-500 font-normal"></span></p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-gray-900 p-4 rounded-xl border border-gray-700">
+<p class="text-sm text-gray-400 uppercase font-semibold">历史财报振幅</p>
+<p class="text-xl font-bold text-white mt-1">32.4%</p>
+</div>
+<div class="bg-gray-900 p-4 rounded-xl border border-gray-700">
+<p class="text-sm text-gray-400 uppercase font-semibold">波动率溢价</p>
+<p class="text-xl font-bold text-green-400 mt-1">利好卖方</p>
+</div>
+</div>
+<p class="text-gray-300 leading-relaxed mt-4">
+<strong>情报局总结：</strong>WBA 当前隐含波动率为 45.8% (高估)，远超其三年真实波幅 32.4%，正是构建 <strong class="text-yellow-500">铁鹰组合 (Iron Condor)</strong> 收割时间价值和 IV 回归的绝佳机会。
+</p>
+</div>
+</div>
+<div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 hover:border-gray-500 transition">
+<div class="flex items-center mb-6">
+<div class="bg-purple-900/50 p-3 rounded-lg mr-4">
+<svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h2 class="text-2xl font-bold text-gray-100">二、回测数据</h2>
+</div>
+<div class="flex justify-between mb-8">
+<div class="text-center">
+<div class="text-3xl font-black text-purple-400">83.3%</div>
+<div class="text-sm text-gray-400 font-medium mt-1">三年财报胜率</div>
+</div>
+<div class="text-center border-l border-gray-600 pl-6">
+<div class="text-3xl font-black text-white">1.5 : 1</div>
+<div class="text-sm text-gray-400 font-medium mt-1">平均盈亏比</div>
+</div>
+<div class="text-center border-l border-gray-600 pl-6">
+<div class="text-3xl font-black text-white">12次</div>
+<div class="text-sm text-gray-400 font-medium mt-1">样本数量</div>
+</div>
+</div>
+<!-- 历史数据表格 -->
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left text-gray-300">
+<thead class="text-xs text-gray-400 uppercase bg-gray-900/50">
+<tr>
+<th class="px-4 py-3 border-b border-gray-700">财报日期</th>
+<th class="px-4 py-3 border-b border-gray-700">股价 (收盘)</th>
+<th class="px-4 py-3 border-b border-gray-700">预期波幅 (IV)</th>
+<th class="px-4 py-3 border-b border-gray-700">真实波幅 (RV)</th>
+<th class="px-4 py-3 border-b border-gray-700">状态</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-700/50">
+<tr><td class="px-4 py-2">2026-01-08</td><td class="px-4 py-2">$18.45</td><td class="px-4 py-2">±8.2%</td><td class="px-4 py-2">5.4%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2025-10-15</td><td class="px-4 py-2">$15.12</td><td class="px-4 py-2">±9.5%</td><td class="px-4 py-2">12.1%</td><td class="px-4 py-2 text-red-400">穿仓</td></tr>
+<tr><td class="px-4 py-2">2025-06-27</td><td class="px-4 py-2">$16.30</td><td class="px-4 py-2">±7.8%</td><td class="px-4 py-2">4.2%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2025-03-27</td><td class="px-4 py-2">$21.15</td><td class="px-4 py-2">±6.5%</td><td class="px-4 py-2">3.1%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2025-01-09</td><td class="px-4 py-2">$24.40</td><td class="px-4 py-2">±7.2%</td><td class="px-4 py-2">5.8%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2024-10-15</td><td class="px-4 py-2">$13.90</td><td class="px-4 py-2">±10.2%</td><td class="px-4 py-2">15.5%</td><td class="px-4 py-2 text-red-400">穿仓</td></tr>
+<tr><td class="px-4 py-2">2024-06-27</td><td class="px-4 py-2">$15.65</td><td class="px-4 py-2">±8.5%</td><td class="px-4 py-2">6.2%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2024-03-28</td><td class="px-4 py-2">$21.02</td><td class="px-4 py-2">±7.5%</td><td class="px-4 py-2">3.8%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2024-01-04</td><td class="px-4 py-2">$25.56</td><td class="px-4 py-2">±6.8%</td><td class="px-4 py-2">4.1%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2023-10-12</td><td class="px-4 py-2">$22.84</td><td class="px-4 py-2">±8.0%</td><td class="px-4 py-2">5.2%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2023-06-27</td><td class="px-4 py-2">$28.49</td><td class="px-4 py-2">±7.2%</td><td class="px-4 py-2">4.5%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2023-03-28</td><td class="px-4 py-2">$32.95</td><td class="px-4 py-2">±6.0%</td><td class="px-4 py-2">2.9%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="max-w-6xl mx-auto bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 hover:border-gray-500 transition mb-16">
+<div class="flex items-center mb-6">
+<div class="bg-amber-900/50 p-3 rounded-lg mr-4">
+<svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h2 class="text-2xl font-bold text-gray-100">三、铁鹰组合操作策略（锦囊A/B/C）</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- A -->
+<div class="border-2 border-emerald-800/80 rounded-2xl p-6 bg-gradient-to-b from-emerald-900/20 to-gray-800 relative overflow-hidden flex flex-col h-full shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+<div class="absolute top-0 right-0 bg-emerald-600/90 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">主推方案</div>
+<h3 class="text-xl font-bold text-emerald-400 mb-2">锦囊 A：激进吃糖法</h3>
+<p class="text-emerald-300/80 text-sm font-medium mb-4">WBA: C22.5/C25 | P15/P17.5</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">15/17.5 | 22.5/25</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,050</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.45</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">18.5%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#10B981" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#10B981" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">15.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">17.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">22.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">25.0</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- B -->
+<div class="border-2 border-blue-800/80 rounded-2xl p-6 bg-gradient-to-b from-blue-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-blue-400 mb-2">锦囊 B：稳健收割法</h3>
+<p class="text-blue-300/80 text-sm font-medium mb-4">WBA: C25/C27.5 | P12.5/P15</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">12.5/15 | 25/27.5</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,220</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.28</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">12.0%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#3B82F6" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#3B82F6" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">12.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">15.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">25.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">27.5</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- C -->
+<div class="border-2 border-orange-800/80 rounded-2xl p-6 bg-gradient-to-b from-orange-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-orange-400 mb-2">锦囊 C：防暴跌偏移法</h3>
+<p class="text-orange-300/80 text-sm font-medium mb-4">WBA: C27.5/C30 | P10/P12.5</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">10/12.5 | 27.5/30</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,320</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.18</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">8.2%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#F97316" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#F97316" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">10.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">12.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">27.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">30.0</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- PAYX -->
+<div class="max-w-6xl mx-auto space-y-8 mb-16">
+<div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 flex justify-between items-center">
+<div>
+<h1 class="text-3xl font-extrabold text-white tracking-tight">PAYX (沛齐) <span class="text-cyan-400">铁鹰狙击全景战术卡片</span></h1>
+<p class="text-gray-400 mt-2 text-lg">本周精选高IV/RV铁鹰标的</p>
+</div>
+<div class="text-right">
+<div class="text-4xl font-bold text-white">当前价</div>
+<div class="text-green-400 font-medium">IV: 26.5% (中高)</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- A -->
+<div class="border-2 border-emerald-800/80 rounded-2xl p-6 bg-gradient-to-b from-emerald-900/20 to-gray-800 flex flex-col h-full shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+<h3 class="text-xl font-bold text-emerald-400 mb-2">锦囊 A：激进吃糖法</h3>
+<p class="text-emerald-300/80 text-sm font-medium mb-4">PAYX: C130/C135 | P110/P115</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">110/115 | 130/135</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,350</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.65</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">14.9%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#10B981" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#10B981" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">110.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">115.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">130.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">135.0</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- B -->
+<div class="border-2 border-blue-800/80 rounded-2xl p-6 bg-gradient-to-b from-blue-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-blue-400 mb-2">锦囊 B：稳健收割法</h3>
+<p class="text-blue-300/80 text-sm font-medium mb-4">PAYX: C135/C140 | P105/P110</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">105/110 | 135/140</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,580</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.42</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">9.2%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#3B82F6" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#3B82F6" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">105.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">110.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">135.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">140.0</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- C -->
+<div class="border-2 border-orange-800/80 rounded-2xl p-6 bg-gradient-to-b from-orange-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-orange-400 mb-2">锦囊 C：防暴跌偏移法</h3>
+<p class="text-orange-300/80 text-sm font-medium mb-4">PAYX: C140/C145 | P100/P105</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">100/105 | 140/145</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,750</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.25</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">5.3%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#F97316" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#F97316" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">100.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">105.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">140.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">145.0</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- MKC -->
+<div class="max-w-6xl mx-auto space-y-8 mb-16">
+<div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 flex justify-between items-center">
+<div>
+<h1 class="text-3xl font-extrabold text-white tracking-tight">MKC (味好美) <span class="text-cyan-400">铁鹰狙击全景战术卡片</span></h1>
+<p class="text-gray-400 mt-2 text-lg">本周精选高IV/RV铁鹰标的</p>
+</div>
+<div class="text-right">
+<div class="text-4xl font-bold text-white">当前价</div>
+<div class="text-green-400 font-medium">IV: 22.1% (中偏高)</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- A -->
+<div class="border-2 border-emerald-800/80 rounded-2xl p-6 bg-gradient-to-b from-emerald-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-emerald-400 mb-2">锦囊 A：激进吃糖法</h3>
+<p class="text-emerald-300/80 text-sm font-medium mb-4">MKC: C85/C90 | P65/P70</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">65/70 | 85/90</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,450</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.55</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">12.4%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#10B981" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#10B981" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">65.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">70.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">85.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">90.0</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- B -->
+<div class="border-2 border-blue-800/80 rounded-2xl p-6 bg-gradient-to-b from-blue-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-blue-400 mb-2">锦囊 B：稳健收割法</h3>
+<p class="text-blue-300/80 text-sm font-medium mb-4">MKC: C90/C95 | P60/P65</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">60/65 | 90/95</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,650</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.35</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">7.5%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#3B82F6" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#3B82F6" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">60.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">65.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">90.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">95.0</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- C -->
+<div class="border-2 border-orange-800/80 rounded-2xl p-6 bg-gradient-to-b from-orange-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-orange-400 mb-2">锦囊 C：防暴跌偏移法</h3>
+<p class="text-orange-300/80 text-sm font-medium mb-4">MKC: C95/C100 | P55/P60</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">55/60 | 95/100</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,800</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.20</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">4.2%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#F97316" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#F97316" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">55.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">60.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">95.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">100.0</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- CAG -->
+<div class="max-w-6xl mx-auto space-y-8 mb-16">
+<div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 flex justify-between items-center">
+<div>
+<h1 class="text-3xl font-extrabold text-white tracking-tight">CAG (康尼格拉) <span class="text-cyan-400">铁鹰狙击全景战术卡片</span></h1>
+<p class="text-gray-400 mt-2 text-lg">本周精选高IV/RV铁鹰标的</p>
+</div>
+<div class="text-right">
+<div class="text-4xl font-bold text-white">当前价</div>
+<div class="text-green-400 font-medium">IV: 29.4% (高估)</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- A -->
+<div class="border-2 border-emerald-800/80 rounded-2xl p-6 bg-gradient-to-b from-emerald-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-emerald-400 mb-2">锦囊 A：激进吃糖法</h3>
+<p class="text-emerald-300/80 text-sm font-medium mb-4">CAG: C32.5/C35 | P25/P27.5</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">25/27.5 | 32.5/35</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,120</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.38</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">17.9%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#10B981" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#10B981" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">25.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">27.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">32.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">35.0</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- B -->
+<div class="border-2 border-blue-800/80 rounded-2xl p-6 bg-gradient-to-b from-blue-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-blue-400 mb-2">锦囊 B：稳健收割法</h3>
+<p class="text-blue-300/80 text-sm font-medium mb-4">CAG: C35/C37.5 | P22.5/P25</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">22.5/25 | 35/37.5</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,260</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.24</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">10.6%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#3B82F6" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#3B82F6" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">22.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">25.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">35.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">37.5</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- C -->
+<div class="border-2 border-orange-800/80 rounded-2xl p-6 bg-gradient-to-b from-orange-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-orange-400 mb-2">锦囊 C：防暴跌偏移法</h3>
+<p class="text-orange-300/80 text-sm font-medium mb-4">CAG: C37.5/C40 | P20/P22.5</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">20/22.5 | 37.5/40</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,350</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.15</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">6.4%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#F97316" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#F97316" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">20.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">22.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">37.5</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">40.0</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- LW -->
+<div class="max-w-6xl mx-auto space-y-8 mb-16">
+<div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 flex justify-between items-center">
+<div>
+<h1 class="text-3xl font-extrabold text-white tracking-tight">LW (蓝威斯顿) <span class="text-cyan-400">铁鹰狙击全景战术卡片</span></h1>
+<p class="text-gray-400 mt-2 text-lg">本周精选高IV/RV铁鹰标的</p>
+</div>
+<div class="text-right">
+<div class="text-4xl font-bold text-white">当前价</div>
+<div class="text-green-400 font-medium">IV: 38.2% (极度高估)</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- A -->
+<div class="border-2 border-emerald-800/80 rounded-2xl p-6 bg-gradient-to-b from-emerald-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-emerald-400 mb-2">锦囊 A：激进吃糖法</h3>
+<p class="text-emerald-300/80 text-sm font-medium mb-4">LW: C110/C115 | P85/P90</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">85/90 | 110/115</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,150</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.85</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">20.5%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#10B981" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#10B981" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">85.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">90.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">110.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">115.0</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- B -->
+<div class="border-2 border-blue-800/80 rounded-2xl p-6 bg-gradient-to-b from-blue-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-blue-400 mb-2">锦囊 B：稳健收割法</h3>
+<p class="text-blue-300/80 text-sm font-medium mb-4">LW: C115/C120 | P80/P85</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">80/85 | 115/120</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,450</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.55</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">12.4%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#3B82F6" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#3B82F6" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">80.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">85.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">115.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">120.0</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- C -->
+<div class="border-2 border-orange-800/80 rounded-2xl p-6 bg-gradient-to-b from-orange-900/20 to-gray-800 flex flex-col h-full">
+<h3 class="text-xl font-bold text-orange-400 mb-2">锦囊 C：防暴跌偏移法</h3>
+<p class="text-orange-300/80 text-sm font-medium mb-4">LW: C120/C125 | P75/P80</p>
+<div class="space-y-4 flex-grow">
+<div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">75/80 | 120/125</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,650</span></div>
+<div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.35</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">7.5%</span></div>
+</div>
+<div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+<svg class="w-full h-24" viewbox="0 0 400 120">
+<line stroke="#4B5563" stroke-dasharray="4" stroke-width="1" x1="20" x2="380" y1="80" y2="80"></line>
+<polygon fill="#F97316" opacity="0.2" points="80,80 140,30 260,30 320,80"></polygon>
+<path d="M 20,100 L 80,80 L 140,30 L 260,30 L 320,80 L 380,100" fill="none" stroke="#F97316" stroke-width="2"></path>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="80" y="95">75.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="140" y="95">80.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="260" y="95">120.0</text>
+<text fill="#9CA3AF" font-size="10" text-anchor="middle" x="320" y="95">125.0</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="max-w-6xl mx-auto bg-gray-900 border-2 border-red-900/50 rounded-2xl p-8 shadow-lg text-white mb-16">
+<div class="flex items-center mb-6">
+<div class="bg-red-900/50 p-3 rounded-lg mr-4 border border-red-500/30">
+<svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h2 class="text-2xl font-bold text-white">四、铁血风控纪律</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-gray-800 p-5 rounded-xl border border-gray-700 text-sm">
+<h4 class="text-red-400 font-bold mb-3">止损红线 (Stop Loss)</h4>
+<ul class="space-y-2 text-gray-300">
+<li>正股价格触及卖出腿行权价且停留 >30min。</li>
+<li>浮亏达到权利金 1.5 倍。</li>
+</ul>
+</div>
+<div class="bg-gray-800 p-5 rounded-xl border border-gray-700 text-sm">
+<h4 class="text-yellow-400 font-bold mb-3">移仓自救 (Rolling Strategy)</h4>
+<ul class="space-y-2 text-gray-300">
+<li>单边被穿，安全侧向股价滚动收取权利金。</li>
+<li>趋势未改，可展期（Roll out）至下月。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="text-center text-gray-600 text-sm pt-4 pb-8">
+© 2026 龙宫金融战术中心 | 铁鹰纪律，敬畏市场。
+</div>
+</body>
+</html>
