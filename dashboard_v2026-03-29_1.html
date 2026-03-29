@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量化交易面板 v2026-03-29_1</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f5f7fa; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; }
+        .header { background: #2c3e50; color: #ecf0f1; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .version { background: #34495e; padding: 5px 10px; border-radius: 4px; font-size: 14px; }
+        .content { padding: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { border: 1px solid #e0e6ed; border-radius: 6px; padding: 20px; }
+        .card h2 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; font-size: 18px; }
+        .metric { font-size: 36px; font-weight: bold; color: #27ae60; margin: 15px 0; }
+        .note { font-size: 12px; color: #7f8c8d; }
+        ul.stop-loss-list { padding-left: 20px; margin: 0; }
+        ul.stop-loss-list li { margin-bottom: 10px; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>量化交易监控面板</h1>
+            <span class="version">Build: v2026-03-29_1</span>
+        </div>
+        <div class="content">
+            <div class="card">
+                <h2>回测胜率表现</h2>
+                <div class="metric">68.5%</div>
+                <p>综合回测胜率（近期回测数据）</p>
+                <div class="note">* 注：根据最新指示，此数据已剔除美团（3690.HK）。</div>
+            </div>
+            <div class="card">
+                <h2>当前止损条件执行策略</h2>
+                <ul class="stop-loss-list">
+                    <li><strong>硬性止损：</strong>单笔交易亏损达到总资金的 <strong>2%</strong> 即强制平仓。</li>
+                    <li><strong>移动止损 (Trailing Stop)：</strong>当未实现利润达到 5% 时，止损线上移至成本价；之后价格每上涨 2%，止损线上移 1%。</li>
+                    <li><strong>时间止损：</strong>持仓超过 <strong>5个交易日</strong> 未达预期盈利目标，自动按市价平仓。</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>系统状态</h2>
+                <p>🟢 交易引擎：运行中</p>
+                <p>🟢 算盘精数据对接：同步完成</p>
+                <p>🕒 更新时间：2026-03-29</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
