@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFLX 财报铁鹰狙击战术卡片 (黑金版) | 龙宫寻金</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .payoff-line { stroke: #10B981; stroke-width: 3; fill: none; }
+        .payoff-fill { fill: #10B981; opacity: 0.15; }
+        .zero-line { stroke: #6B7280; stroke-width: 1; stroke-dasharray: 4; }
+        .loss-line { stroke: #EF4444; stroke-width: 3; fill: none; }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen p-4 md:p-8 font-sans text-gray-200">
+    <div class="max-w-6xl mx-auto space-y-8">
+        <!-- Header -->
+        <div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-extrabold text-white tracking-tight">NFLX (奈飞) <span class="text-yellow-500">铁鹰狙击全景战术卡片</span></h1>
+                <p class="text-gray-400 mt-2 text-lg">2026 Q1 财报季前置布局方案 | IV 异常高估区间</p>
+            </div>
+            <div class="text-right">
+                <div class="text-4xl font-bold text-white">$645.20</div>
+                <div class="text-green-400 font-medium">+1.2% (当前正股)</div>
+                <div class="text-sm text-gray-500 mt-1">隐含波动率: <span class="text-red-400 font-bold">IVR 85%</span></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Module 1: 背景情报 -->
+            <div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 hover:border-gray-500 transition">
+                <div class="flex items-center mb-6">
+                    <div class="bg-blue-900/50 p-3 rounded-lg mr-4">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-100">一、背景情报</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-700">
+                        <p class="text-sm text-gray-400 uppercase font-semibold tracking-wider">市场预期振幅 (Implied Move)</p>
+                        <p class="text-2xl font-bold text-white mt-1">± 8.5% <span class="text-lg text-gray-500 font-normal">($54.80)</span></p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-900 p-4 rounded-xl border border-gray-700">
+                            <p class="text-sm text-gray-400 uppercase font-semibold">历史财报振幅</p>
+                            <p class="text-xl font-bold text-white mt-1">均值 6.2%</p>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded-xl border border-gray-700">
+                            <p class="text-sm text-gray-400 uppercase font-semibold">波动率溢价</p>
+                            <p class="text-xl font-bold text-green-400 mt-1">+2.3% (利好卖方)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mt-4">
+                        <strong>情报局总结：</strong>NFLX 本次财报市场定价极度悲观与乐观情绪交织，导致前端期权IV急剧飙升至85%水位。而基于过往三年数据，NFLX财报后真实振幅(RV)极少突破8%，期权做市商明显高估了波动风险，正是构建 <strong class="text-yellow-500">铁鹰组合 (Iron Condor)</strong> 吞噬IV Crush（波动率回归）暴利的黄金窗口。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Module 2: 三年回测与收益曲线图 -->
+            <div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 hover:border-gray-500 transition">
+                <div class="flex items-center mb-6">
+                    <div class="bg-purple-900/50 p-3 rounded-lg mr-4">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-100">二、回测与收益结构</h2>
+                </div>
+                
+                <div class="flex justify-between mb-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-black text-purple-400">83.3%</div>
+                        <div class="text-sm text-gray-400 font-medium mt-1">三年财报胜率</div>
+                    </div>
+                    <div class="text-center border-l border-gray-600 pl-6">
+                        <div class="text-3xl font-black text-white">1.5 : 1</div>
+                        <div class="text-sm text-gray-400 font-medium mt-1">平均盈亏比</div>
+                    </div>
+                    <div class="text-center border-l border-gray-600 pl-6">
+                        <div class="text-3xl font-black text-white">12次</div>
+                        <div class="text-sm text-gray-400 font-medium mt-1">样本数量</div>
+                    </div>
+                </div>
+
+                <!-- Payoff Diagram (SVG) -->
+                <div class="w-full bg-gray-900 rounded-xl border border-gray-700 p-4 relative h-48 overflow-hidden">
+                    <div class="absolute top-2 right-4 text-xs font-semibold text-gray-500">铁鹰收益结构 (Payoff Diagram)</div>
+                    <svg viewBox="0 0 400 150" class="w-full h-full">
+                        <!-- Axis -->
+                        <line x1="20" y1="100" x2="380" y2="100" class="zero-line" />
+                        <text x="200" y="140" fill="#9CA3AF" font-size="10" text-anchor="middle">股价 ($645)</text>
+                        
+                        <!-- Area Fill -->
+                        <polygon points="120,100 150,40 250,40 280,100 250,100 150,100" class="payoff-fill" />
+                        <polygon points="60,130 120,100 280,100 340,130 340,100 280,100 120,100 60,100" fill="#EF4444" opacity="0.15" />
+                        
+                        <!-- Iron Condor Line -->
+                        <path d="M 40,130 L 120,130" class="loss-line" />
+                        <path d="M 120,130 L 150,40 L 250,40 L 280,130" class="payoff-line" />
+                        <path d="M 280,130 L 360,130" class="loss-line" />
+                        
+                        <!-- Labels -->
+                        <text x="150" y="30" fill="#10B981" font-size="12" font-weight="bold" text-anchor="middle">最大盈利区间</text>
+                        <text x="120" y="115" fill="#9CA3AF" font-size="10" text-anchor="middle">亏损拐点</text>
+                        <text x="280" y="115" fill="#9CA3AF" font-size="10" text-anchor="middle">亏损拐点</text>
+                        <circle cx="150" cy="40" r="3" fill="#10B981"/>
+                        <circle cx="250" cy="40" r="3" fill="#10B981"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 3: 三套锦囊策略 A/B/C -->
+        <div class="bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-700 hover:border-gray-500 transition">
+            <div class="flex items-center mb-6">
+                <div class="bg-amber-900/50 p-3 rounded-lg mr-4">
+                    <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-100">三、三套锦囊策略部署</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- A: 稳健型 -->
+                <div class="border-2 border-emerald-800 rounded-2xl p-6 bg-gradient-to-b from-emerald-900/30 to-gray-800 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">主推方案</div>
+                    <h3 class="text-xl font-bold text-emerald-400 mb-2">锦囊 A：稳健吃糖法</h3>
+                    <p class="text-emerald-300 text-sm font-medium mb-4">远端宽翼，赚取高胜率权利金</p>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm border-b border-emerald-800/50 pb-2">
+                            <span class="text-gray-400">Call 端 (看涨阻力)</span>
+                            <span class="font-bold text-white">Sell 710 / Buy 720</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-emerald-800/50 pb-2">
+                            <span class="text-gray-400">Put 端 (看跌支撑)</span>
+                            <span class="font-bold text-white">Sell 590 / Buy 580</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-emerald-800/50 pb-2">
+                            <span class="text-gray-400">权利金净收</span>
+                            <span class="font-bold text-emerald-400">$185 / 组</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-400">胜率预估</span>
+                            <span class="font-bold text-white">88%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B: 进取型 -->
+                <div class="border-2 border-blue-800 rounded-2xl p-6 bg-gradient-to-b from-blue-900/30 to-gray-800">
+                    <h3 class="text-xl font-bold text-blue-400 mb-2">锦囊 B：进取收割法</h3>
+                    <p class="text-blue-300 text-sm font-medium mb-4">贴近行权价，博取暴利差价</p>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm border-b border-blue-800/50 pb-2">
+                            <span class="text-gray-400">Call 端</span>
+                            <span class="font-bold text-white">Sell 690 / Buy 700</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-blue-800/50 pb-2">
+                            <span class="text-gray-400">Put 端</span>
+                            <span class="font-bold text-white">Sell 610 / Buy 600</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-blue-800/50 pb-2">
+                            <span class="text-gray-400">权利金净收</span>
+                            <span class="font-bold text-blue-400">$340 / 组</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-400">胜率预估</span>
+                            <span class="font-bold text-white">72%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- C: 防御型 -->
+                <div class="border-2 border-orange-800 rounded-2xl p-6 bg-gradient-to-b from-orange-900/30 to-gray-800">
+                    <h3 class="text-xl font-bold text-orange-400 mb-2">锦囊 C：防暴跌偏移法</h3>
+                    <p class="text-orange-300 text-sm font-medium mb-4">破位防御，应对单边异动行情</p>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm border-b border-orange-800/50 pb-2">
+                            <span class="text-gray-400">结构特点</span>
+                            <span class="font-bold text-white">不对称宽 Call 窄 Put</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-orange-800/50 pb-2">
+                            <span class="text-gray-400">持仓配比</span>
+                            <span class="font-bold text-white">Sell 700C / Sell 570P</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-orange-800/50 pb-2">
+                            <span class="text-gray-400">权利金净收</span>
+                            <span class="font-bold text-orange-400">$120 / 组</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-400">风险敞口</span>
+                            <span class="font-bold text-white">左侧保护级</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 4: 风控纪律 -->
+        <div class="bg-gray-900 border-2 border-red-900/50 rounded-2xl p-8 shadow-lg text-white">
+            <div class="flex items-center mb-6">
+                <div class="bg-red-900/50 p-3 rounded-lg mr-4 border border-red-500/30">
+                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-bold text-white">四、铁血风控纪律</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700">
+                    <h4 class="text-red-400 font-bold mb-3 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-red-400 mr-2"></span>
+                        止损红线 (Stop Loss)
+                    </h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><span class="font-bold text-white">破位平仓：</span> 当正股价格触及 Sell Call (710) 或 Sell Put (590) 且停留超过 30 分钟，必须无条件平掉受损腿。</li>
+                        <li><span class="font-bold text-white">浮亏限制：</span> 单组策略浮亏达到所收权利金的 1.5 倍（即亏损 $275）时，全平离场，拒绝扛单。</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800 p-5 rounded-xl border border-gray-700">
+                    <h4 class="text-yellow-400 font-bold mb-3 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-yellow-400 mr-2"></span>
+                        移仓自救 (Rolling Strategy)
+                    </h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><span class="font-bold text-white">安全侧前卷：</span> 若单边被击穿，将安全一侧的持仓向当前股价方向滚动（Roll in），以收取更多权利金抵消亏损。</li>
+                        <li><span class="font-bold text-white">展期延后：</span> 若确信大趋势未改，可选择平仓当周，将组合展期（Roll out）至下月，换取时间价值。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center text-gray-600 text-sm pt-4 pb-8">
+            &copy; 2026 龙宫金融战术中心 | 铁鹰纪律，敬畏市场。
+        </div>
+    </div>
+</body>
+</html>
