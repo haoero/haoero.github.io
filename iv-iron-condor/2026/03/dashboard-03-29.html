@@ -66,9 +66,9 @@
 <div class="bg-purple-900/50 p-3 rounded-lg mr-4">
 <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </div>
-<h2 class="text-2xl font-bold text-gray-100">二、回测与收益结构</h2>
+<h2 class="text-2xl font-bold text-gray-100">二、回测数据</h2>
 </div>
-<div class="flex justify-between mb-6">
+<div class="flex justify-between mb-8">
 <div class="text-center">
 <div class="text-3xl font-black text-purple-400">83.3%</div>
 <div class="text-sm text-gray-400 font-medium mt-1">三年财报胜率</div>
@@ -81,6 +81,34 @@
 <div class="text-3xl font-black text-white">12次</div>
 <div class="text-sm text-gray-400 font-medium mt-1">样本数量</div>
 </div>
+</div>
+<!-- 历史数据表格 -->
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left text-gray-300">
+<thead class="text-xs text-gray-400 uppercase bg-gray-900/50">
+<tr>
+<th class="px-4 py-3 border-b border-gray-700">财报日期</th>
+<th class="px-4 py-3 border-b border-gray-700">股价 (收盘)</th>
+<th class="px-4 py-3 border-b border-gray-700">预期波幅 (IV)</th>
+<th class="px-4 py-3 border-b border-gray-700">真实波幅 (RV)</th>
+<th class="px-4 py-3 border-b border-gray-700">状态</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-700/50">
+<tr><td class="px-4 py-2">2026-01-08</td><td class="px-4 py-2">$18.45</td><td class="px-4 py-2">±8.2%</td><td class="px-4 py-2">5.4%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2025-10-15</td><td class="px-4 py-2">$15.12</td><td class="px-4 py-2">±9.5%</td><td class="px-4 py-2">12.1%</td><td class="px-4 py-2 text-red-400">穿仓</td></tr>
+<tr><td class="px-4 py-2">2025-06-27</td><td class="px-4 py-2">$16.30</td><td class="px-4 py-2">±7.8%</td><td class="px-4 py-2">4.2%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2025-03-27</td><td class="px-4 py-2">$21.15</td><td class="px-4 py-2">±6.5%</td><td class="px-4 py-2">3.1%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2025-01-09</td><td class="px-4 py-2">$24.40</td><td class="px-4 py-2">±7.2%</td><td class="px-4 py-2">5.8%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2024-10-15</td><td class="px-4 py-2">$13.90</td><td class="px-4 py-2">±10.2%</td><td class="px-4 py-2">15.5%</td><td class="px-4 py-2 text-red-400">穿仓</td></tr>
+<tr><td class="px-4 py-2">2024-06-27</td><td class="px-4 py-2">$15.65</td><td class="px-4 py-2">±8.5%</td><td class="px-4 py-2">6.2%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2024-03-28</td><td class="px-4 py-2">$21.02</td><td class="px-4 py-2">±7.5%</td><td class="px-4 py-2">3.8%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2024-01-04</td><td class="px-4 py-2">$25.56</td><td class="px-4 py-2">±6.8%</td><td class="px-4 py-2">4.1%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2023-10-12</td><td class="px-4 py-2">$22.84</td><td class="px-4 py-2">±8.0%</td><td class="px-4 py-2">5.2%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2023-06-27</td><td class="px-4 py-2">$28.49</td><td class="px-4 py-2">±7.2%</td><td class="px-4 py-2">4.5%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+<tr><td class="px-4 py-2">2023-03-28</td><td class="px-4 py-2">$32.95</td><td class="px-4 py-2">±6.0%</td><td class="px-4 py-2">2.9%</td><td class="px-4 py-2 text-green-400">盈利</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -99,8 +127,10 @@
 <p class="text-emerald-300/80 text-sm font-medium mb-4">WBA: C22.5/C25 | P15/P17.5</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">15/17.5 | 22.5/25</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,050</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.45</span></div>
-<div class="flex justify-between"><span>预期收益率:</span> <span class="text-emerald-400 font-bold">18.5%</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">18.5%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -121,8 +151,10 @@
 <p class="text-blue-300/80 text-sm font-medium mb-4">WBA: C25/C27.5 | P12.5/P15</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">12.5/15 | 25/27.5</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,220</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.28</span></div>
-<div class="flex justify-between"><span>预期收益率:</span> <span class="text-blue-400 font-bold">12.0%</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">12.0%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -143,8 +175,10 @@
 <p class="text-orange-300/80 text-sm font-medium mb-4">WBA: C27.5/C30 | P10/P12.5</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">10/12.5 | 27.5/30</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,320</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.18</span></div>
-<div class="flex justify-between"><span>预期收益率:</span> <span class="text-orange-400 font-bold">8.2%</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">8.2%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -181,7 +215,10 @@
 <p class="text-emerald-300/80 text-sm font-medium mb-4">PAYX: C130/C135 | P110/P115</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">110/115 | 130/135</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,350</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.65</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">14.9%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -202,7 +239,10 @@
 <p class="text-blue-300/80 text-sm font-medium mb-4">PAYX: C135/C140 | P105/P110</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">105/110 | 135/140</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,580</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.42</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">9.2%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -223,7 +263,10 @@
 <p class="text-orange-300/80 text-sm font-medium mb-4">PAYX: C140/C145 | P100/P105</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">100/105 | 140/145</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,750</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.25</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">5.3%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -260,7 +303,10 @@
 <p class="text-emerald-300/80 text-sm font-medium mb-4">MKC: C85/C90 | P65/P70</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">65/70 | 85/90</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,450</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.55</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">12.4%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -281,7 +327,10 @@
 <p class="text-blue-300/80 text-sm font-medium mb-4">MKC: C90/C95 | P60/P65</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">60/65 | 90/95</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,650</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.35</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">7.5%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -302,7 +351,10 @@
 <p class="text-orange-300/80 text-sm font-medium mb-4">MKC: C95/C100 | P55/P60</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">55/60 | 95/100</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,800</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.20</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">4.2%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -339,7 +391,10 @@
 <p class="text-emerald-300/80 text-sm font-medium mb-4">CAG: C32.5/C35 | P25/P27.5</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">25/27.5 | 32.5/35</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,120</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.38</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">17.9%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -360,7 +415,10 @@
 <p class="text-blue-300/80 text-sm font-medium mb-4">CAG: C35/C37.5 | P22.5/P25</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">22.5/25 | 35/37.5</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,260</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.24</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">10.6%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -381,7 +439,10 @@
 <p class="text-orange-300/80 text-sm font-medium mb-4">CAG: C37.5/C40 | P20/P22.5</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">20/22.5 | 37.5/40</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$2,350</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.15</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">6.4%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -418,7 +479,10 @@
 <p class="text-emerald-300/80 text-sm font-medium mb-4">LW: C110/C115 | P85/P90</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-emerald-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">85/90 | 110/115</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,150</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-emerald-400 font-bold">$0.85</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-emerald-400 font-bold">20.5%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -439,7 +503,10 @@
 <p class="text-blue-300/80 text-sm font-medium mb-4">LW: C115/C120 | P80/P85</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-blue-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">80/85 | 115/120</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,450</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-blue-400 font-bold">$0.55</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-blue-400 font-bold">12.4%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
@@ -460,7 +527,10 @@
 <p class="text-orange-300/80 text-sm font-medium mb-4">LW: C120/C125 | P75/P80</p>
 <div class="space-y-4 flex-grow">
 <div class="bg-gray-900/60 rounded-xl p-4 border border-orange-800/30 text-sm">
+<div class="flex justify-between"><span>行权价:</span> <span class="text-white font-bold">75/80 | 120/125</span></div>
+<div class="flex justify-between"><span>保证金:</span> <span class="text-white font-bold">$4,650</span></div>
 <div class="flex justify-between"><span>净收权利金:</span> <span class="text-orange-400 font-bold">$0.35</span></div>
+<div class="flex justify-between"><span>预期ROI:</span> <span class="text-orange-400 font-bold">7.5%</span></div>
 </div>
 <div class="mt-4 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
 <svg class="w-full h-24" viewbox="0 0 400 120">
