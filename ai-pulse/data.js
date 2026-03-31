@@ -1,6 +1,11 @@
 const aiPulseData = [
     {
         "date": "2026-03-31",
-        "content": "## AI Builders Digest — 2026年3月31日\n\n### 播客 (PODCASTS)\n\n**Latent Space — \"为何 Agent 总是失败（以及如何修复）\"**\n核心结论：大多数 Agent 的失败并非智力不足，而是工具使用上的失败。系统推理能力没问题，只是无法在正确的时间可靠地调用正确的 API。\n关键洞察：\n- 当 Agent 可用工具超过 15 个时，工具选择准确率从 95% 骤降至 60%。解决方案不是更聪明的模型，而是针对每个任务精心策划工具。\n- \"评估驱动开发 (Eval-driven development)\" 正在取代过去那种凭感觉的提示词迭代。如果你不测量，你就是在瞎猜。\n- 主持人预测 2026 年是 Agent 框架从 50+ 个整合到 3-4 个赢家的一年。他们押注的是：OpenAI Agents SDK, Claude Code 和 LangGraph。\n[观看视频](https://youtube.com)\n\n**No Priors — \"缩放定律已死，缩放定律万岁\" (嘉宾: Ilya Sutskever)**\n核心结论：预训练的缩放定律（Scaling Laws）已经遇到边际收益递减，但后训练（post-training）和推理时计算的缩放才刚刚开始。\n关键洞察：\n- Ilya 认为下一个 10 倍的提升来自于那些能在推理时\"思考更久\"的模型，而不是更大的预训练规模。\n- 合成数据的质量比数量更重要。\"一本完美的教科书胜过一百万条 Reddit 评论。\"\n- 他对开源出人意料地看好：\"差距将缩小到几个月，而不是几年。\"\n[观看视频](https://youtube.com)\n\n---\n\n### 推特 (X / TWITTER)\n\n**Andrej Karpathy (@karpathy)**\n分享了一篇深度长文，解释为什么他认为 \"软件 3.0\"（自然语言编程）将在 5 年内让传统的编码成为小众技能。核心论点：编译目标正在从机器代码转变为 LLM 提示词。这引发了大规模的争论。\n同时发布了一个新的 Eureka Labs 教程，教你从零开始构建一个代码解释器。\n[查看推文](https://x.com/karpathy)\n\n**Guillermo Rauch (@rauchg)**\n宣布了 Vercel 的新产品 \"v0 Teams\" —— 协作式 AI 原型设计，多人可以同时提示并迭代同一个 UI。称之为 \"适用于氛围编程的 Google Docs\"。下周发布。\n[查看推文](https://x.com/rauchg)\n\n**Amanda Askell (@AmandaAskell)**\n发表了对 AI 安全基准的细致看法：\"我们正在测量容易测量的东西，而不是重要的东西。能力评估告诉你模型能做什么，而对齐评估应该告诉你它在没有提示时会做什么。\" 链接到了 Anthropic 一篇关于行为评估的新论文。\n[查看推文](https://x.com/AmandaAskell)"
+        "content": "## AI Builders Digest — 2026年3月31日\n\n### 推特 (X / TWITTER)\n\n**Nan Yu (@thenanyu)**\nAnnounced a new AI feature today!\n",
+        "summaryImage": "images/summary-2026-03-31.png",
+        "bios": {
+            "Nan Yu": "head of product @linear",
+            "Claude": "Claude is an AI assistant built by @anthropicai to be safe, accurate, and secure. Talk to Claude on https://t.co/ZhTwG8d1e5 or download the app."
+        }
     }
 ];

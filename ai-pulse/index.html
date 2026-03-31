@@ -201,6 +201,27 @@
                 padding: 1.5rem;
             }
         }
+    
+        .summary-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .author-bio {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: #8b949e;
+            background: rgba(139, 148, 158, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            margin-left: 8px;
+            vertical-align: middle;
+            font-weight: 500;
+        }
+
     </style>
 </head>
 <body>
@@ -255,12 +276,33 @@
                     contentHtml = parseMarkdown(contentHtml);
                 }
 
-                itemDiv.innerHTML = `
+                
+                let imageHtml = '';
+                if (item.summaryImage) {
+                    imageHtml = `<img src="${item.summaryImage}" class="summary-image" alt="每日一图总结">`;
+                }
+                
+                if (item.bios) {
+                    for (const [name, bio] of Object.entries(item.bios)) {
+                        const safeName = name.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\itemDiv.innerHTML = `
                     <div class="card">
                         <div class="date">${item.date}</div>
                         <div class="content">${contentHtml}</div>
                     </div>
+                `;');
+                        const nameRegex = new RegExp(`<strong>(${safeName}.*?)<\\/strong>`, 'g');
+                        contentHtml = contentHtml.replace(nameRegex, `<strong>$1</strong> <span class="author-bio">${bio}</span>`);
+                    }
+                }
+
+                itemDiv.innerHTML = `
+                    <div class="card">
+                        <div class="date">${item.date}</div>
+                        ${imageHtml}
+                        <div class="content">${contentHtml}</div>
+                    </div>
                 `;
+
                 timeline.appendChild(itemDiv);
             });
         });
