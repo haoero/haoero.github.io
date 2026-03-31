@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 脉搏 | AI Pulse</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+            --glass-bg: rgba(22, 27, 34, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --timeline-color: rgba(88, 166, 255, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(88, 166, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(137, 87, 229, 0.08), transparent 25%);
+            background-attachment: fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #58a6ff, #8957e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Timeline Line */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: var(--timeline-color);
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .timeline {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            right: calc(50% - 6px);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-color);
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: calc(50% - 6px);
+        }
+
+        .card {
+            width: 90%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(88, 166, 255, 0.3);
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        .content h2, .content h3 {
+            color: #e6edf3;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+            color: #8b949e;
+        }
+
+        .content ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: #8b949e;
+        }
+
+        .content a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .content a:hover {
+            color: #79c0ff;
+            text-decoration: underline;
+        }
+
+        .content hr {
+            border: 0;
+            height: 1px;
+            background: var(--glass-border);
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container::before {
+                left: 20px;
+            }
+            .timeline-item {
+                padding-right: 0;
+                padding-left: 50px;
+                justify-content: flex-start;
+            }
+            .timeline-item:nth-child(even) {
+                padding-left: 50px;
+            }
+            .timeline-item::before, .timeline-item:nth-child(even)::before {
+                left: 14px;
+            }
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI 脉搏</h1>
+        <div class="subtitle">AI Builders Digest · 探索与前沿</div>
+    </header>
+
+    <div class="container">
+        <div class="timeline" id="timeline">
+            <!-- Cards will be injected here via JS -->
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeline = document.getElementById('timeline');
+            
+            if (typeof aiPulseData === 'undefined' || aiPulseData.length === 0) {
+                timeline.innerHTML = '<div style="text-align:center; width:100%;">暂无数据更新</div>';
+                return;
+            }
+
+            // Optional: minimal markdown parsing for bold, links, lists if content is raw markdown
+            function parseMarkdown(text) {
+                let html = text
+                    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                    .replace(/^# (.*$)/gim, '<h2>$1</h2>')
+                    .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+                    .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>')
+                    .replace(/^\- (.*$)/gim, '<li>$1</li>')
+                    .replace(/\n\n/gim, '</p><p>')
+                    .replace(/\n(?=<li>)/gim, '');
+                
+                // Wrap lists
+                html = html.replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>');
+                // Clean up multiple uls
+                html = html.replace(/<\/ul>\n<ul>/gim, '\n');
+                
+                return '<p>' + html + '</p>';
+            }
+
+            aiPulseData.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'timeline-item';
+                
+                let contentHtml = item.content;
+                // Basic check if it's plain text/markdown without HTML tags
+                if (!contentHtml.includes('<p>') && !contentHtml.includes('<h2>')) {
+                    contentHtml = parseMarkdown(contentHtml);
+                }
+
+                itemDiv.innerHTML = `
+                    <div class="card">
+                        <div class="date">${item.date}</div>
+                        <div class="content">${contentHtml}</div>
+                    </div>
+                `;
+                timeline.appendChild(itemDiv);
+            });
+        });
+    </script>
+</body>
+</html>
