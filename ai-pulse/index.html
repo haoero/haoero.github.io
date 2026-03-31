@@ -147,6 +147,7 @@
             margin-bottom: 1rem;
             color: #8b949e;
             line-height: 1.7;
+            white-space: pre-wrap; /* Ensure text with \n displays correctly */
         }
 
         .content ul {
@@ -163,6 +164,7 @@
             color: var(--accent-color);
             text-decoration: none;
             transition: color 0.2s;
+            word-break: break-all;
         }
 
         .content a:hover {
@@ -246,7 +248,7 @@
                 return;
             }
 
-            // Optional: minimal markdown parsing for bold, links, lists if content is raw markdown
+            // Enhanced markdown parsing
             function parseMarkdown(text) {
                 let html = text
                     .replace(/^### (.*$)/gim, '<h3>$1</h3>')
@@ -254,15 +256,11 @@
                     .replace(/^# (.*$)/gim, '<h2>$1</h2>')
                     .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
                     .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>')
+                    .replace(/^(https?:\/\/\S+)/gim, '<a href="$1" target="_blank">$1</a>')
                     .replace(/^\- (.*$)/gim, '<li>$1</li>')
-                    .replace(/\n\n/gim, '</p><p>')
-                    .replace(/\n(?=<li>)/gim, '');
+                    .replace(/\n\n/gim, '</p><p>');
                 
-                // Wrap lists
-                html = html.replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>');
-                // Clean up multiple uls
-                html = html.replace(/<\/ul>\n<ul>/gim, '\n');
-                
+                // Final wrapping
                 return '<p>' + html + '</p>';
             }
 
@@ -271,20 +269,16 @@
                 itemDiv.className = 'timeline-item';
                 
                 let contentHtml = item.content;
-                // Basic check if it's plain text/markdown without HTML tags
-                if (!contentHtml.includes('<p>') && !contentHtml.includes('<h2>')) {
+                // Always parse if it contains markdown markers
+                if (contentHtml.includes('**') || contentHtml.includes('###')) {
                     contentHtml = parseMarkdown(contentHtml);
                 }
 
-                
-                let imageHtml = '';
-                if (item.summaryImage) {
-                    imageHtml = `<img src="${item.summaryImage}" class="summary-image" alt="每日一图总结">`;
-                }
-                
                 if (item.bios) {
                     for (const [name, bio] of Object.entries(item.bios)) {
+                        // Create a safe regex for the name
                         const safeName = name.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+                        // Match Name in bold tags
                         const nameRegex = new RegExp(`<strong>(${safeName}.*?)<\\/strong>`, 'g');
                         contentHtml = contentHtml.replace(nameRegex, `<strong>$1</strong> <span class="author-bio">${bio}</span>`);
                     }
@@ -293,7 +287,7 @@
                 itemDiv.innerHTML = `
                     <div class="card">
                         <div class="date">${item.date}</div>
-                        ${imageHtml}
+                        ${item.summaryImage ? `<img src="${item.summaryImage}" class="summary-image" alt="今日概览">` : ''}
                         <div class="content">${contentHtml}</div>
                     </div>
                 `;
