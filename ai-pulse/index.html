@@ -284,12 +284,7 @@
                 
                 if (item.bios) {
                     for (const [name, bio] of Object.entries(item.bios)) {
-                        const safeName = name.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\itemDiv.innerHTML = `
-                    <div class="card">
-                        <div class="date">${item.date}</div>
-                        <div class="content">${contentHtml}</div>
-                    </div>
-                `;');
+                        const safeName = name.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
                         const nameRegex = new RegExp(`<strong>(${safeName}.*?)<\\/strong>`, 'g');
                         contentHtml = contentHtml.replace(nameRegex, `<strong>$1</strong> <span class="author-bio">${bio}</span>`);
                     }
